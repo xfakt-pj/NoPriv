@@ -235,6 +235,7 @@ def get_messages_to_local_maildir(mailFolder, mail, startid = 1):
         total_messages_in_mailbox = len(mdata[0].split())
     except:
     	print "failed, mailFolder empty? (" + mailFolder + ")"
+        pass
         
     last_mail_id = 0
     try:
