@@ -854,7 +854,8 @@ if not offline:
         retries = 0
         if ssl:
             try:
-                get_messages_to_local_maildir(folder, mail)    
+                if folder:
+                    get_messages_to_local_maildir(folder, mail)
             except imaplib.IMAP4_SSL.abort:
                 if retries < 5:
                     print(("SSL Connection Abort. Trying again (#%i).") % retries)
@@ -865,7 +866,8 @@ if not offline:
                     print("SSL Connection gave more than 5 errors. Not trying again")
         else:
             try:
-                get_messages_to_local_maildir(folder, mail)    
+                if folder:
+                    get_messages_to_local_maildir(folder, mail)
             except imaplib.IMAP4.abort:
                 if retries < 5:
                     print(("Connection Abort. Trying again (#%i).") % retries)
