@@ -229,7 +229,13 @@ def get_messages_to_local_maildir(mailFolder, mail, startid = 1):
         print("Does the imap folder \"%s\" exists?" % mailFolder)
         return
 
-    total_messages_in_mailbox = len(mdata[0].split())
+    total_messages_in_mailbox = 0
+
+    try:
+        total_messages_in_mailbox = len(mdata[0].split())
+    except:
+    	print "failed, mailFolder empty? (" + mailFolder + ")"
+        
     last_mail_id = 0
     try:
         last_mail_id = mdata[0].split()[-1]
